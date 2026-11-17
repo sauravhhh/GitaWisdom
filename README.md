@@ -5,15 +5,14 @@ Telegram bot serving verses from the Bhagavad Gita. Live as **@gitawisdom_bot** 
 ## Commands
 
 - `/start` — welcome and command list
-- `/verse` — a random verse (Sanskrit in Devanagari + English translation)
-- `/random` — a random verse
-- `/shloka 1.1` — a specific verse: chapter.verse (also `/shloka 1 1`, `/verse 1.1`)
+- `/random` — a random verse (Sanskrit in Devanagari + English translation)
+- `/shloka 1.1` — a specific verse: chapter.verse (also `/shloka 1 1`)
 - `/chapter <1-18>` — chapter name, verse count and a short summary
 - `/about` — about this bot
 - `/help` — command list
 
 Every command also works as a plain word, with or without the slash:
-`help`, `verse`, `random`, `shloka 1.1`, `verse 1 1`, `chapter 2`, `about`.
+`help`, `random`, `shloka 1.1`, `shloka 1 1`, `chapter 2`, `about`.
 Each verse reply shows the chapter name, e.g. "Bhagavad Gita 1.1 — Arjuna Vishada Yoga".
 
 ## Verse data
