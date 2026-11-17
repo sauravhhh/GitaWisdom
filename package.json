@@ -1,0 +1,1 @@
+{"description":"Telegram bot serving Bhagavad Gita verses (@gitawisdom_bot)","engines":{"node":">=18"},"main":"api/telegram.js","name":"gitawisdom-bot","private":true,"version":"1.0.0"}
