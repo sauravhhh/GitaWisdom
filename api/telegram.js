@@ -33,6 +33,7 @@ const COMMANDS =
   '/shloka 1 1 \u2014 same, chapter and verse\n' +
   '/daily \u2014 today\u2019s verse\n' +
   '/chapter <1-18> \u2014 about a chapter\n' +
+  '/about \u2014 about this bot\n' +
   '/help \u2014 list of commands';
 
 function cleanEnglish(text) {
@@ -138,6 +139,11 @@ module.exports = async (req, res) => {
       'Namaste. I am Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\n' +
       'Commands:\n' + COMMANDS + '\n\n' +
       'Send "verse" or "shloka" any time for a random verse.';
+  } else if (firstWord === '/about') {
+    reply =
+      'Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\n' +
+      '701 verses from all 18 chapters, in Sanskrit with English translation.\n\n' +
+      'Made by Saurabh Saha from Assam.';
   } else if (firstWord === '/help') {
     reply = 'Commands:\n' + COMMANDS;
   } else if (firstWord === '/verse' || firstWord === '/shloka') {
