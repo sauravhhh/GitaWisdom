@@ -28,8 +28,7 @@ const CHAPTERS = [
 ];
 
 const COMMANDS =
-  '/verse 1.1 \u2014 a specific verse (chapter.verse)\n' +
-  '/shloka 1.1 \u2014 a specific verse (chapter.verse)';
+  '/verse 1.1 or /shloka 1.1 \u2014 a specific verse (chapter.verse)';
 
 function cleanEnglish(text) {
   // Dataset English starts with a "2.47 " prefix; the reference line carries it already.
