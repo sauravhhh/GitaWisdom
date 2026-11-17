@@ -29,6 +29,8 @@ const CHAPTERS = [
 
 const COMMANDS =
   '/verse \u2014 a random verse\n' +
+  '/verse 1.1 \u2014 a specific verse (chapter.verse)\n' +
+  '/shloka 1 1 \u2014 same, chapter and verse\n' +
   '/daily \u2014 today\u2019s verse\n' +
   '/chapter <1-18> \u2014 about a chapter\n' +
   '/help \u2014 list of commands';
@@ -54,6 +56,24 @@ function verseOfTheDay(date) {
   // Deterministic by UTC date: same verse for everyone on the same day.
   const day = Math.floor((date || new Date()).getTime() / 86400000);
   return VERSES[day % VERSES.length];
+}
+
+function specificVerse(ch, vs) {
+  const chapter = CHAPTERS.find(c => c.n === ch);
+  if (!chapter) return 'Please give a chapter from 1 to 18, e.g. /verse 1.1';
+  const v = VERSES.find(v => v.chapter === ch && v.verse === vs);
+  if (!v) return 'Chapter ' + ch + ' (' + chapter.name + ') has ' + chapter.verses + ' verses. Try /verse ' + ch + '.1 to /verse ' + ch + '.' + chapter.verses;
+  return formatVerse(v);
+}
+
+function parseVerseArg(arg) {
+  const dotted = arg.match(/^(\d+)\s*\.\s*(\d+)$/);
+  if (dotted) return [parseInt(dotted[1], 10), parseInt(dotted[2], 10)];
+  const parts = arg.split(/\s+/);
+  if (parts.length === 2 && /^\d+$/.test(parts[0]) && /^\d+$/.test(parts[1])) {
+    return [parseInt(parts[0], 10), parseInt(parts[1], 10)];
+  }
+  return null;
 }
 
 function chapterText(n) {
@@ -120,8 +140,13 @@ module.exports = async (req, res) => {
       'Send "verse" or "shloka" any time for a random verse.';
   } else if (firstWord === '/help') {
     reply = 'Commands:\n' + COMMANDS;
-  } else if (firstWord === '/verse') {
-    reply = formatVerse(randomVerse());
+  } else if (firstWord === '/verse' || firstWord === '/shloka') {
+    if (!arg) {
+      reply = formatVerse(randomVerse());
+    } else {
+      const parsed = parseVerseArg(arg);
+      reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. /verse 1.1 or /verse 1 1';
+    }
   } else if (firstWord === '/daily') {
     reply = 'Verse of the day\n\n' + formatVerse(verseOfTheDay());
   } else if (firstWord === '/chapter') {
