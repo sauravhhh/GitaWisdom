@@ -28,11 +28,8 @@ const CHAPTERS = [
 ];
 
 const COMMANDS =
-  '/random \u2014 a random verse\n' +
-  '/shloka 1.1 \u2014 a specific verse (chapter.verse)\n' +
-  '/chapter <1-18> \u2014 about a chapter\n' +
-  '/about \u2014 about this bot\n' +
-  '/help \u2014 list of commands';
+  '/verse 1.1 \u2014 a specific verse (chapter.verse)\n' +
+  '/shloka 1.1 \u2014 a specific verse (chapter.verse)';
 
 function cleanEnglish(text) {
   // Dataset English starts with a "2.47 " prefix; the reference line carries it already.
@@ -71,6 +68,27 @@ function parseVerseArg(arg) {
     return [parseInt(parts[0], 10), parseInt(parts[1], 10)];
   }
   return null;
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (!m) return n;
+  if (!n) return m;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+// verse, shloka, sloka — and typos of them ("vrse", "shlkoa", "sloak"...).
+function isVerseWord(w) {
+  if (w.length < 3) return false;
+  return ['verse', 'shloka', 'sloka'].some(t => levenshtein(w, t) <= 2);
 }
 
 function chapterText(n) {
@@ -135,19 +153,18 @@ module.exports = async (req, res) => {
     reply =
       'Namaste. I am Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\n' +
       'Commands:\n' + COMMANDS + '\n\n' +
-      'You can also just type the words \u2014 random, shloka 1.1, chapter 2, help \u2014 no slash needed.';
+      'Type verse or shloka with a number \u2014 like shloka 1.1 \u2014 to get that verse.';
   } else if (word === 'about') {
     reply =
       'Bhagwat Gita Quotes\n\n' +
       'A Telegram bot that brings the wisdom of the Bhagavad Gita to you \u2014 701 verses across all 18 chapters, with the original Sanskrit text and English translation.\n\n' +
-      'Send /random for a random verse, /shloka 1.1 for a specific one.\n\n' +
+      'Send verse or shloka with the chapter and verse \u2014 like shloka 1.1 \u2014 to get that verse. Send /random for a random verse.\n\n' +
       'Created by Saurabh Saha, Assam.';
   } else if (word === 'help') {
     reply = 'Commands:\n' + COMMANDS;
-  } else if (word === 'shloka') {
-    if (!arg) {
-      reply = formatVerse(randomVerse());
-    } else {
+  } else if (word === 'shloka' || isVerseWord(word)) {
+    // Bare "shloka" or "verse" (no number) does nothing — a number is required.
+    if (arg) {
       const parsed = parseVerseArg(arg);
       reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. shloka 1.1 or shloka 1 1';
     }
