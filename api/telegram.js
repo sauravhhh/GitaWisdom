@@ -28,7 +28,6 @@ const CHAPTERS = [
 ];
 
 const COMMANDS =
-  '/verse \u2014 a random verse\n' +
   '/random \u2014 a random verse\n' +
   '/shloka 1.1 \u2014 a specific verse (chapter.verse)\n' +
   '/chapter <1-18> \u2014 about a chapter\n' +
@@ -136,21 +135,21 @@ module.exports = async (req, res) => {
     reply =
       'Namaste. I am Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\n' +
       'Commands:\n' + COMMANDS + '\n\n' +
-      'You can also just type the words \u2014 verse, random, shloka 1.1, chapter 2, help \u2014 no slash needed.';
+      'You can also just type the words \u2014 random, shloka 1.1, chapter 2, help \u2014 no slash needed.';
   } else if (word === 'about') {
     reply =
       'Bhagwat Gita Quotes\n\n' +
       'A Telegram bot that brings the wisdom of the Bhagavad Gita to you \u2014 701 verses across all 18 chapters, with the original Sanskrit text and English translation.\n\n' +
-      'Send /verse or /random for a random verse, /shloka 1.1 for a specific one.\n\n' +
+      'Send /random for a random verse, /shloka 1.1 for a specific one.\n\n' +
       'Created by Saurabh Saha, Assam.';
   } else if (word === 'help') {
     reply = 'Commands:\n' + COMMANDS;
-  } else if (word === 'verse' || word === 'shloka') {
+  } else if (word === 'shloka') {
     if (!arg) {
       reply = formatVerse(randomVerse());
     } else {
       const parsed = parseVerseArg(arg);
-      reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. shloka 1.1 or verse 1 1';
+      reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. shloka 1.1 or shloka 1 1';
     }
   } else if (word === 'random') {
     reply = formatVerse(randomVerse());
