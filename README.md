@@ -6,8 +6,7 @@ Telegram bot serving verses from the Bhagavad Gita. Live as **@gitawisdom_bot** 
 
 - `/start` — welcome and command list
 - `/verse` — a random verse (Sanskrit in Devanagari + English translation)
-- `/verse 1.1` — a specific verse: chapter.verse (also `/verse 1 1`)
-- `/shloka 1.1` — same as `/verse`, for a specific verse
+- `/shloka 1.1` — a specific verse: chapter.verse (also `/shloka 1 1`)
 - `/daily` — verse of the day (same verse for everyone on the same day)
 - `/chapter <1-18>` — chapter name, verse count and a short summary
 - `/about` — about this bot
@@ -31,10 +30,11 @@ Chapter summaries in `api/telegram.js` are short factual summaries of the 18 cha
 
 ## About
 
-Bhagwat Gita Quotes serves verses from the Bhagavad Gita — 701 verses from all
-18 chapters, in Sanskrit with English translation.
+Bhagwat Gita Quotes is a Telegram bot that brings the wisdom of the Bhagavad
+Gita to you — 701 verses across all 18 chapters, with the original Sanskrit
+text and English translation.
 
-Made by **Saurabh Saha** from Assam.
+Created by **Saurabh Saha**, Assam.
 
 ## Deploy (Vercel)
 
