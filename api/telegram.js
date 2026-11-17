@@ -29,8 +29,7 @@ const CHAPTERS = [
 
 const COMMANDS =
   '/verse \u2014 a random verse\n' +
-  '/verse 1.1 \u2014 a specific verse (chapter.verse)\n' +
-  '/shloka 1 1 \u2014 same, chapter and verse\n' +
+  '/shloka 1.1 \u2014 a specific verse (chapter.verse)\n' +
   '/daily \u2014 today\u2019s verse\n' +
   '/chapter <1-18> \u2014 about a chapter\n' +
   '/about \u2014 about this bot\n' +
@@ -63,7 +62,7 @@ function specificVerse(ch, vs) {
   const chapter = CHAPTERS.find(c => c.n === ch);
   if (!chapter) return 'Please give a chapter from 1 to 18, e.g. /verse 1.1';
   const v = VERSES.find(v => v.chapter === ch && v.verse === vs);
-  if (!v) return 'Chapter ' + ch + ' (' + chapter.name + ') has ' + chapter.verses + ' verses. Try /verse ' + ch + '.1 to /verse ' + ch + '.' + chapter.verses;
+  if (!v) return 'Chapter ' + ch + ' (' + chapter.name + ') has ' + chapter.verses + ' verses. Try /shloka ' + ch + '.1 to /shloka ' + ch + '.' + chapter.verses;
   return formatVerse(v);
 }
 
@@ -141,17 +140,20 @@ module.exports = async (req, res) => {
       'Send "verse" or "shloka" any time for a random verse.';
   } else if (firstWord === '/about') {
     reply =
-      'Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\n' +
-      '701 verses from all 18 chapters, in Sanskrit with English translation.\n\n' +
-      'Made by Saurabh Saha from Assam.';
+      'Bhagwat Gita Quotes\n\n' +
+      'A Telegram bot that brings the wisdom of the Bhagavad Gita to you \u2014 701 verses across all 18 chapters, with the original Sanskrit text and English translation.\n\n' +
+      'Send /verse for a random verse, /shloka 1.1 for a specific one, or /daily for today\u2019s verse.\n\n' +
+      'Created by Saurabh Saha, Assam.';
   } else if (firstWord === '/help') {
     reply = 'Commands:\n' + COMMANDS;
-  } else if (firstWord === '/verse' || firstWord === '/shloka') {
+  } else if (firstWord === '/verse') {
+    reply = formatVerse(randomVerse());
+  } else if (firstWord === '/shloka') {
     if (!arg) {
-      reply = formatVerse(randomVerse());
+      reply = 'Send /shloka with the chapter and verse, e.g. /shloka 1.1 for Chapter 1, Verse 1.';
     } else {
       const parsed = parseVerseArg(arg);
-      reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. /verse 1.1 or /verse 1 1';
+      reply = parsed ? specificVerse(parsed[0], parsed[1]) : 'Give the verse as chapter.verse, e.g. /shloka 1.1 or /shloka 1 1';
     }
   } else if (firstWord === '/daily') {
     reply = 'Verse of the day\n\n' + formatVerse(verseOfTheDay());
