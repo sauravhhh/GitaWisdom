@@ -28,7 +28,11 @@ const CHAPTERS = [
 ];
 
 const COMMANDS =
-  '/verse 1.1 or /shloka 1.1 \u2014 a specific verse (chapter.verse)';
+  '/random \u2014 a random verse\n' +
+  '/shloka 1.1 \u2014 a specific verse (chapter.verse)\n' +
+  '/chapter <1-18> \u2014 about a chapter\n' +
+  '/about \u2014 about this bot\n' +
+  '/help \u2014 list of commands';
 
 function cleanEnglish(text) {
   // Dataset English starts with a "2.47 " prefix; the reference line carries it already.
@@ -160,7 +164,7 @@ module.exports = async (req, res) => {
       'Send verse or shloka with the chapter and verse \u2014 like shloka 1.1 \u2014 to get that verse. Send /random for a random verse.\n\n' +
       'Created by Saurabh Saha, Assam.';
   } else if (word === 'help') {
-    reply = 'Commands:\n' + COMMANDS;
+    reply = 'Bhagwat Gita Quotes \u2014 the wisdom of the Bhagavad Gita, one verse at a time.\n\nCommands:\n' + COMMANDS;
   } else if (word === 'shloka' || isVerseWord(word)) {
     // Bare "shloka" or "verse" (no number) does nothing — a number is required.
     if (arg) {
