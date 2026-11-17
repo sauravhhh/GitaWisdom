@@ -6,6 +6,8 @@ Telegram bot serving verses from the Bhagavad Gita. Live as **@gitawisdom_bot** 
 
 - `/start` — welcome and command list
 - `/verse` — a random verse (Sanskrit in Devanagari + English translation)
+- `/verse 1.1` — a specific verse: chapter.verse (also `/verse 1 1`)
+- `/shloka 1.1` — same as `/verse`, for a specific verse
 - `/daily` — verse of the day (same verse for everyone on the same day)
 - `/chapter <1-18>` — chapter name, verse count and a short summary
 - `/help` — command list
