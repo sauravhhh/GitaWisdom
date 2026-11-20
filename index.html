@@ -3,95 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhagwat Gita Quotes — @gitawisdom_bot</title>
-<meta name="description" content="Bhagwat Gita Quotes is a Telegram bot serving all 701 verses of the Bhagavad Gita in Sanskrit with English translation.">
+<title>Bhagavad Gita — Read all 701 verses</title>
+<meta name="description" content="Read all 701 verses of the Bhagavad Gita in Sanskrit with English translation.">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Georgia, 'Times New Roman', serif; background: #fffdf6; color: #1c2b45; line-height: 1.6; }
-  .hero { background: #0f2340; color: #fffdf6; text-align: center; padding: 56px 20px 48px; }
-  .hero img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #c9a227; background: #fff; object-fit: cover; }
-  .hero h1 { font-size: 34px; margin: 18px 0 6px; letter-spacing: 0.5px; }
-  .hero .handle { color: #c9a227; font-size: 18px; margin-bottom: 10px; }
-  .hero p { max-width: 560px; margin: 0 auto; opacity: 0.92; font-size: 17px; }
-  .btn { display: inline-block; margin-top: 26px; background: #c9a227; color: #0f2340; font-weight: bold; font-size: 18px; padding: 13px 34px; border-radius: 999px; text-decoration: none; }
-  .btn:hover { background: #d9b23a; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 20px; }
-  h2 { color: #0f2340; font-size: 24px; margin-bottom: 14px; border-bottom: 2px solid #c9a227; padding-bottom: 6px; }
-  section { margin-bottom: 44px; }
-  .verse { background: #fdf3d7; border: 1px solid #e8d9a8; border-radius: 12px; padding: 24px; text-align: center; }
-  .verse .sanskrit { font-size: 21px; line-height: 1.9; color: #0f2340; }
-  .verse .translit { font-style: italic; color: #5a6b87; margin-top: 12px; font-size: 15px; }
-  .verse .english { margin-top: 14px; font-size: 17px; }
-  .verse .ref { margin-top: 12px; color: #8a6d1a; font-size: 14px; }
-  .cmd { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid #eee3c0; }
-  .cmd:last-child { border-bottom: none; }
-  .cmd code { background: #0f2340; color: #ffd97a; padding: 3px 10px; border-radius: 6px; font-size: 15px; white-space: nowrap; }
-  .cmd span { font-size: 16px; }
+  header { background: #0f2340; color: #fffdf6; text-align: center; padding: 36px 20px 28px; }
+  header img { width: 84px; height: 84px; border-radius: 50%; border: 3px solid #c9a227; background: #fff; object-fit: cover; }
+  header h1 { font-size: 30px; margin: 12px 0 4px; }
+  header p { opacity: 0.9; font-size: 16px; }
+  header .tg { display: inline-block; margin-top: 16px; color: #ffd97a; border: 1px solid #c9a227; border-radius: 999px; padding: 7px 20px; text-decoration: none; font-size: 15px; }
+  .bar { max-width: 760px; margin: 0 auto; padding: 18px 20px 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .bar select, .bar input { font-family: inherit; font-size: 16px; padding: 9px 12px; border: 1px solid #d8c690; border-radius: 8px; background: #fff; color: #1c2b45; }
+  .bar select { flex: 1; min-width: 200px; }
+  .bar input { width: 120px; }
+  .bar button { font-family: inherit; font-size: 16px; padding: 9px 18px; border: none; border-radius: 8px; background: #c9a227; color: #0f2340; font-weight: bold; cursor: pointer; }
+  .bar button:hover { background: #d9b23a; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 22px 20px 20px; }
+  h2 { color: #0f2340; font-size: 24px; margin-bottom: 6px; }
+  .sub { color: #5a6b87; margin-bottom: 18px; }
   .chapters { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-  .ch { background: #fff; border: 1px solid #e8d9a8; border-radius: 10px; padding: 12px 14px; }
+  .ch { background: #fff; border: 1px solid #e8d9a8; border-radius: 10px; padding: 14px; cursor: pointer; text-align: left; font-family: inherit; }
+  .ch:hover { border-color: #c9a227; background: #fdf6df; }
   .ch b { color: #0f2340; display: block; font-size: 15px; }
   .ch span { color: #5a6b87; font-size: 13px; }
+  .nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+  .nav button { font-family: inherit; font-size: 15px; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 8px; background: #fff; color: #0f2340; cursor: pointer; }
+  .nav button:disabled { opacity: 0.4; cursor: default; }
+  .verse { background: #fff; border: 1px solid #e8d9a8; border-radius: 12px; padding: 20px 22px; margin-bottom: 16px; }
+  .verse.hl { border: 2px solid #c9a227; background: #fdf6df; }
+  .verse .num { color: #8a6d1a; font-size: 14px; font-weight: bold; margin-bottom: 8px; }
+  .verse .sanskrit { font-size: 20px; line-height: 1.9; color: #0f2340; }
+  .verse .translit { font-style: italic; color: #5a6b87; margin-top: 10px; font-size: 15px; }
+  .verse .english { margin-top: 12px; font-size: 16px; }
+  .loading { text-align: center; color: #5a6b87; padding: 60px 0; font-size: 17px; }
   footer { text-align: center; color: #5a6b87; font-size: 14px; padding: 24px 20px 40px; }
   footer a { color: #0f2340; }
-  @media (max-width: 520px) { .hero h1 { font-size: 27px; } .verse .sanskrit { font-size: 18px; } }
+  @media (max-width: 520px) { header h1 { font-size: 25px; } .verse .sanskrit { font-size: 18px; } }
 </style>
 </head>
 <body>
 
-<div class="hero">
+<header>
   <img src="logo.png" alt="Bhagwat Gita Quotes logo">
-  <h1>Bhagwat Gita Quotes</h1>
-  <div class="handle">@gitawisdom_bot</div>
-  <p>All 701 verses of the Bhagavad Gita, in Sanskrit with English translation — one message away on Telegram.</p>
-  <a class="btn" href="https://t.me/gitawisdom_bot">Open in Telegram</a>
+  <h1>Bhagavad Gita</h1>
+  <p>All 701 verses · Sanskrit with English translation</p>
+  <a class="tg" href="https://t.me/gitawisdom_bot">Get verses on Telegram · @gitawisdom_bot</a>
+</header>
+
+<div class="bar">
+  <select id="chapterSelect" aria-label="Choose chapter"></select>
+  <input id="gotoInput" placeholder="e.g. 2.47" aria-label="Go to verse">
+  <button id="gotoBtn">Go to verse</button>
+  <button id="randomBtn">Random verse</button>
 </div>
 
-<div class="wrap">
-
-  <section>
-    <h2>A verse to begin with</h2>
-    <div class="verse">
-      <div class="sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।<br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥२-४७॥</div>
-      <div class="translit">karmaṇyevādhikāraste mā phaleṣu kadācana .<br>mā karmaphalaheturbhūrmā te saṅgo'stvakarmaṇi ||2-47||</div>
-      <div class="english">"Thy right is to work only, but never with its fruits; let not the fruits of action be thy motive, nor let thy attachment be to inaction."</div>
-      <div class="ref">Bhagavad Gita 2.47 · Translation: Shri Purohit Swami</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Commands</h2>
-    <div class="cmd"><code>/random</code><span>a random verse</span></div>
-    <div class="cmd"><code>/shloka 1.1</code><span>a specific verse (chapter.verse)</span></div>
-    <div class="cmd"><code>/chapter &lt;1-18&gt;</code><span>about a chapter</span></div>
-    <div class="cmd"><code>/about</code><span>about this bot</span></div>
-    <div class="cmd"><code>/help</code><span>list of commands</span></div>
-    <p style="margin-top:12px; color:#5a6b87; font-size:15px;">Commands also work as plain words — just send <b>random</b>, <b>shloka 1.1</b> or <b>chapter 2</b>. Every verse reply shows its chapter name.</p>
-  </section>
-
-  <section>
-    <h2>The 18 chapters · 701 verses</h2>
-    <div class="chapters">
-      <div class="ch"><b>1 · Arjuna Vishada Yoga</b><span>47 verses</span></div>
-      <div class="ch"><b>2 · Sankhya Yoga</b><span>72 verses</span></div>
-      <div class="ch"><b>3 · Karma Yoga</b><span>43 verses</span></div>
-      <div class="ch"><b>4 · Jnana Karma Sannyasa Yoga</b><span>42 verses</span></div>
-      <div class="ch"><b>5 · Karma Sannyasa Yoga</b><span>29 verses</span></div>
-      <div class="ch"><b>6 · Dhyana Yoga</b><span>47 verses</span></div>
-      <div class="ch"><b>7 · Jnana Vijnana Yoga</b><span>30 verses</span></div>
-      <div class="ch"><b>8 · Akshara Brahma Yoga</b><span>28 verses</span></div>
-      <div class="ch"><b>9 · Raja Vidya Raja Guhya Yoga</b><span>34 verses</span></div>
-      <div class="ch"><b>10 · Vibhuti Yoga</b><span>42 verses</span></div>
-      <div class="ch"><b>11 · Vishvarupa Darshana Yoga</b><span>55 verses</span></div>
-      <div class="ch"><b>12 · Bhakti Yoga</b><span>20 verses</span></div>
-      <div class="ch"><b>13 · Kshetra Kshetrajna Vibhaga Yoga</b><span>35 verses</span></div>
-      <div class="ch"><b>14 · Gunatraya Vibhaga Yoga</b><span>27 verses</span></div>
-      <div class="ch"><b>15 · Purushottama Yoga</b><span>20 verses</span></div>
-      <div class="ch"><b>16 · Daivasura Sampad Vibhaga Yoga</b><span>24 verses</span></div>
-      <div class="ch"><b>17 · Shraddhatraya Vibhaga Yoga</b><span>28 verses</span></div>
-      <div class="ch"><b>18 · Moksha Sannyasa Yoga</b><span>78 verses</span></div>
-    </div>
-  </section>
-
+<div class="wrap" id="app">
+  <div class="loading">Loading verses…</div>
 </div>
 
 <footer>
@@ -99,6 +67,119 @@
   English translations by Shri Purohit Swami (1935, public domain), with Swami Sivananda as fallback.<br>
   <a href="https://github.com/sauravhhh/GitaWisdom">View the code on GitHub</a>
 </footer>
+
+<script>
+var CHAPTERS = [
+  "Arjuna Vishada Yoga", "Sankhya Yoga", "Karma Yoga",
+  "Jnana Karma Sannyasa Yoga", "Karma Sannyasa Yoga", "Dhyana Yoga",
+  "Jnana Vijnana Yoga", "Akshara Brahma Yoga", "Raja Vidya Raja Guhya Yoga",
+  "Vibhuti Yoga", "Vishvarupa Darshana Yoga", "Bhakti Yoga",
+  "Kshetra Kshetrajna Vibhaga Yoga", "Gunatraya Vibhaga Yoga",
+  "Purushottama Yoga", "Daivasura Sampad Vibhaga Yoga",
+  "Shraddhatraya Vibhaga Yoga", "Moksha Sannyasa Yoga"
+];
+var VERSES = [];
+var app = document.getElementById('app');
+var select = document.getElementById('chapterSelect');
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function cleanEnglish(t) {
+  return String(t || '').replace(/^\d+\.\d+\s*/, '');
+}
+function verseHtml(v) {
+  return '<div class="verse" id="v' + v.chapter + '-' + v.verse + '">' +
+    '<div class="num">Bhagavad Gita ' + v.chapter + '.' + v.verse + '</div>' +
+    '<div class="sanskrit">' + esc(v.sanskrit).replace(/\n/g, '<br>') + '</div>' +
+    '<div class="translit">' + esc(v.transliteration).replace(/\n/g, '<br>') + '</div>' +
+    '<div class="english">' + esc(cleanEnglish(v.english || v.english_alt)) + '</div>' +
+    '</div>';
+}
+function chapterCount(n) {
+  var c = 0;
+  for (var i = 0; i < VERSES.length; i++) if (VERSES[i].chapter === n) c++;
+  return c;
+}
+function showChapters() {
+  select.value = '';
+  var html = '<h2>The 18 chapters</h2><p class="sub">Tap a chapter to read its verses.</p><div class="chapters">';
+  for (var n = 1; n <= 18; n++) {
+    html += '<button class="ch" data-ch="' + n + '"><b>' + n + ' · ' + esc(CHAPTERS[n - 1]) + '</b><span>' + chapterCount(n) + ' verses</span></button>';
+  }
+  html += '</div>';
+  app.innerHTML = html;
+  var btns = app.querySelectorAll('.ch');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () { showChapter(parseInt(this.getAttribute('data-ch'), 10)); });
+  }
+  window.scrollTo(0, 0);
+}
+function showChapter(n, highlight) {
+  select.value = String(n);
+  var list = [];
+  for (var i = 0; i < VERSES.length; i++) if (VERSES[i].chapter === n) list.push(VERSES[i]);
+  list.sort(function (a, b) { return a.verse - b.verse; });
+  var html = '<div class="nav">' +
+    '<button id="backBtn">&larr; All chapters</button>' +
+    '<button id="prevBtn"' + (n <= 1 ? ' disabled' : '') + '>&larr; Prev</button>' +
+    '<button id="nextBtn"' + (n >= 18 ? ' disabled' : '') + '>Next &rarr;</button></div>' +
+    '<h2>Chapter ' + n + ' · ' + esc(CHAPTERS[n - 1]) + '</h2>' +
+    '<p class="sub">' + list.length + ' verses</p>';
+  for (var j = 0; j < list.length; j++) html += verseHtml(list[j]);
+  app.innerHTML = html;
+  document.getElementById('backBtn').addEventListener('click', showChapters);
+  document.getElementById('prevBtn').addEventListener('click', function () { if (n > 1) showChapter(n - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function () { if (n < 18) showChapter(n + 1); });
+  if (highlight) {
+    var el = document.getElementById('v' + n + '-' + highlight);
+    if (el) {
+      el.classList.add('hl');
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+function goToVerse(text) {
+  var m = String(text || '').trim().match(/^(\d{1,2})[.\s]+(\d{1,3})$/);
+  if (!m) { alert('Type a verse like 2.47'); return; }
+  var ch = parseInt(m[1], 10), vs = parseInt(m[2], 10);
+  if (ch < 1 || ch > 18) { alert('Chapter must be 1 to 18'); return; }
+  showChapter(ch, vs);
+}
+function randomVerse() {
+  var v = VERSES[Math.floor(Math.random() * VERSES.length)];
+  showChapter(v.chapter, v.verse);
+}
+
+select.addEventListener('change', function () {
+  var n = parseInt(select.value, 10);
+  if (n >= 1 && n <= 18) showChapter(n);
+});
+document.getElementById('gotoBtn').addEventListener('click', function () {
+  goToVerse(document.getElementById('gotoInput').value);
+});
+document.getElementById('gotoInput').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') goToVerse(this.value);
+});
+document.getElementById('randomBtn').addEventListener('click', randomVerse);
+
+fetch('data/verses.json')
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    VERSES = data.verses || [];
+    var opts = '<option value="">Choose a chapter…</option>';
+    for (var n = 1; n <= 18; n++) {
+      opts += '<option value="' + n + '">Chapter ' + n + ' · ' + esc(CHAPTERS[n - 1]) + ' (' + chapterCount(n) + ' verses)</option>';
+    }
+    select.innerHTML = opts;
+    showChapters();
+  })
+  .catch(function () {
+    app.innerHTML = '<div class="loading">Could not load the verses. Please check your connection and refresh.</div>';
+  });
+</script>
 
 </body>
 </html>
