@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhagwat Gita Quotes — @gitawisdom_bot</title>
+<meta name="description" content="Bhagwat Gita Quotes is a Telegram bot serving all 701 verses of the Bhagavad Gita in Sanskrit with English translation.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: #fffdf6; color: #1c2b45; line-height: 1.6; }
+  .hero { background: #0f2340; color: #fffdf6; text-align: center; padding: 56px 20px 48px; }
+  .hero img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #c9a227; background: #fff; object-fit: cover; }
+  .hero h1 { font-size: 34px; margin: 18px 0 6px; letter-spacing: 0.5px; }
+  .hero .handle { color: #c9a227; font-size: 18px; margin-bottom: 10px; }
+  .hero p { max-width: 560px; margin: 0 auto; opacity: 0.92; font-size: 17px; }
+  .btn { display: inline-block; margin-top: 26px; background: #c9a227; color: #0f2340; font-weight: bold; font-size: 18px; padding: 13px 34px; border-radius: 999px; text-decoration: none; }
+  .btn:hover { background: #d9b23a; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 20px; }
+  h2 { color: #0f2340; font-size: 24px; margin-bottom: 14px; border-bottom: 2px solid #c9a227; padding-bottom: 6px; }
+  section { margin-bottom: 44px; }
+  .verse { background: #fdf3d7; border: 1px solid #e8d9a8; border-radius: 12px; padding: 24px; text-align: center; }
+  .verse .sanskrit { font-size: 21px; line-height: 1.9; color: #0f2340; }
+  .verse .translit { font-style: italic; color: #5a6b87; margin-top: 12px; font-size: 15px; }
+  .verse .english { margin-top: 14px; font-size: 17px; }
+  .verse .ref { margin-top: 12px; color: #8a6d1a; font-size: 14px; }
+  .cmd { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid #eee3c0; }
+  .cmd:last-child { border-bottom: none; }
+  .cmd code { background: #0f2340; color: #ffd97a; padding: 3px 10px; border-radius: 6px; font-size: 15px; white-space: nowrap; }
+  .cmd span { font-size: 16px; }
+  .chapters { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .ch { background: #fff; border: 1px solid #e8d9a8; border-radius: 10px; padding: 12px 14px; }
+  .ch b { color: #0f2340; display: block; font-size: 15px; }
+  .ch span { color: #5a6b87; font-size: 13px; }
+  footer { text-align: center; color: #5a6b87; font-size: 14px; padding: 24px 20px 40px; }
+  footer a { color: #0f2340; }
+  @media (max-width: 520px) { .hero h1 { font-size: 27px; } .verse .sanskrit { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="logo.png" alt="Bhagwat Gita Quotes logo">
+  <h1>Bhagwat Gita Quotes</h1>
+  <div class="handle">@gitawisdom_bot</div>
+  <p>All 701 verses of the Bhagavad Gita, in Sanskrit with English translation — one message away on Telegram.</p>
+  <a class="btn" href="https://t.me/gitawisdom_bot">Open in Telegram</a>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2>A verse to begin with</h2>
+    <div class="verse">
+      <div class="sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।<br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥२-४७॥</div>
+      <div class="translit">karmaṇyevādhikāraste mā phaleṣu kadācana .<br>mā karmaphalaheturbhūrmā te saṅgo'stvakarmaṇi ||2-47||</div>
+      <div class="english">"Thy right is to work only, but never with its fruits; let not the fruits of action be thy motive, nor let thy attachment be to inaction."</div>
+      <div class="ref">Bhagavad Gita 2.47 · Translation: Shri Purohit Swami</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Commands</h2>
+    <div class="cmd"><code>/random</code><span>a random verse</span></div>
+    <div class="cmd"><code>/shloka 1.1</code><span>a specific verse (chapter.verse)</span></div>
+    <div class="cmd"><code>/chapter &lt;1-18&gt;</code><span>about a chapter</span></div>
+    <div class="cmd"><code>/about</code><span>about this bot</span></div>
+    <div class="cmd"><code>/help</code><span>list of commands</span></div>
+    <p style="margin-top:12px; color:#5a6b87; font-size:15px;">Commands also work as plain words — just send <b>random</b>, <b>shloka 1.1</b> or <b>chapter 2</b>. Every verse reply shows its chapter name.</p>
+  </section>
+
+  <section>
+    <h2>The 18 chapters · 701 verses</h2>
+    <div class="chapters">
+      <div class="ch"><b>1 · Arjuna Vishada Yoga</b><span>47 verses</span></div>
+      <div class="ch"><b>2 · Sankhya Yoga</b><span>72 verses</span></div>
+      <div class="ch"><b>3 · Karma Yoga</b><span>43 verses</span></div>
+      <div class="ch"><b>4 · Jnana Karma Sannyasa Yoga</b><span>42 verses</span></div>
+      <div class="ch"><b>5 · Karma Sannyasa Yoga</b><span>29 verses</span></div>
+      <div class="ch"><b>6 · Dhyana Yoga</b><span>47 verses</span></div>
+      <div class="ch"><b>7 · Jnana Vijnana Yoga</b><span>30 verses</span></div>
+      <div class="ch"><b>8 · Akshara Brahma Yoga</b><span>28 verses</span></div>
+      <div class="ch"><b>9 · Raja Vidya Raja Guhya Yoga</b><span>34 verses</span></div>
+      <div class="ch"><b>10 · Vibhuti Yoga</b><span>42 verses</span></div>
+      <div class="ch"><b>11 · Vishvarupa Darshana Yoga</b><span>55 verses</span></div>
+      <div class="ch"><b>12 · Bhakti Yoga</b><span>20 verses</span></div>
+      <div class="ch"><b>13 · Kshetra Kshetrajna Vibhaga Yoga</b><span>35 verses</span></div>
+      <div class="ch"><b>14 · Gunatraya Vibhaga Yoga</b><span>27 verses</span></div>
+      <div class="ch"><b>15 · Purushottama Yoga</b><span>20 verses</span></div>
+      <div class="ch"><b>16 · Daivasura Sampad Vibhaga Yoga</b><span>24 verses</span></div>
+      <div class="ch"><b>17 · Shraddhatraya Vibhaga Yoga</b><span>28 verses</span></div>
+      <div class="ch"><b>18 · Moksha Sannyasa Yoga</b><span>78 verses</span></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Created by Saurabh Saha, Assam.<br>
+  English translations by Shri Purohit Swami (1935, public domain), with Swami Sivananda as fallback.<br>
+  <a href="https://github.com/sauravhhh/GitaWisdom">View the code on GitHub</a>
+</footer>
+
+</body>
+</html>
